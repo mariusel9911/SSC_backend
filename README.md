@@ -4,7 +4,7 @@
 
 Această aplicație implementează un sistem de autentificare cu factori multipli (Multi-Factor Authentication - MFA) folosind limbajul de programare Go. Sistemul este compus dintr-un frontend și un backend care interacționează pentru a oferi o soluție completă de autentificare securizată, utilizând multiple metode de verificare pentru a confirma identitatea utilizatorilor.
 
-## Adresele Repository-urilor
+## Adresele de Repository
 
 - Frontend: [https://github.com/mariusel9911/SSC_frontend](https://github.com/mariusel9911/SSC_frontend)
 - Backend: [https://github.com/mariusel9911/SSC_backend](https://github.com/mariusel9911/SSC_backend)
@@ -49,7 +49,7 @@ Pentru gestionarea sesiunilor autentificate, aplicația utilizează tehnologia J
 
 Aplicația este structurată folosind un model client-server, cu separare clară între frontend și backend:
 
-1. **Frontend** - interfața cu utilizatorul, dezvoltată cu tehnologii web moderne și găzduită în repository-ul SSC_frontend
+1. **Frontend** - interfața cu utilizatorul, dezvoltată cu React și găzduită în repository-ul SSC_frontend
 2. **Backend** - serviciul API care gestionează logica de autentificare, dezvoltat în Go și găzduit în repository-ul SSC_backend
 
 Comunicarea între cele două componente se realizează prin API RESTful.
@@ -162,7 +162,7 @@ SSC_backend/
 
 #### Componente Frontend
 
-Frontend-ul este dezvoltat utilizând tehnologii moderne pentru a oferi o experiență de utilizare fluidă și intuitivă. Principalele componente includ:
+Frontend-ul este dezvoltat utilizând tehnologii pentru a oferi o experiență de utilizare fluidă și intuitivă. Principalele componente includ:
 
 1. **Framework UI** - Implementat folosind tehnologii moderne de frontend:
    - Framework React pentru construirea interfețelor reutilizabile
@@ -170,19 +170,19 @@ Frontend-ul este dezvoltat utilizând tehnologii moderne pentru a oferi o experi
    - Rutare client-side pentru navigarea fără refresh
 
 2. **Module de autentificare**:
-   - `AuthProvider`: Component React care gestionează starea de autentificare
-   - `ProtectedRoute`: Component pentru protejarea rutelor care necesită autentificare
+   - `AuthProvider`: Componentă React care gestionează starea de autentificare
+   - `ProtectedRoute`: Componentă pentru protejarea rutelor care necesită autentificare
    - `TokenManager`: Serviciu pentru gestionarea token-urilor JWT în localStorage/sessionStorage
 
 3. **Componente de interfață**:
    - `RegisterForm`: Formular pentru înregistrarea utilizatorilor noi
    - `LoginForm`: Formular pentru autentificarea cu utilizator și parolă
    - `OTPSetup`: Interfață pentru configurarea autentificării cu doi factori
-   - `OTPValidator`: Component pentru introducerea și validarea codurilor TOTP
+   - `OTPValidator`: Componentă pentru introducerea și validarea codurilor TOTP
    - `UserProfile`: Interfață pentru gestionarea profilului utilizatorului
 
 4. **Servicii**:
-   - `ApiService`: Gestionează comunicarea cu backend-ul prin API RESTful
+   - `ApiService`: Gestionează comunicarea cu backend-ul prin RESTful APIs
    - `QrCodeGenerator`: Generează coduri QR pentru scanarea cu aplicații de autentificare
    - `NotificationService`: Afișează notificări și mesaje pentru utilizator
 
@@ -378,7 +378,7 @@ Aplicația implementează următoarele măsuri de securitate pentru a proteja da
    - Utilizarea de token-uri JWT cu semnătură digitală pentru autentificare
    - Durata limitată de viață a token-urilor pentru a reduce fereastra de oportunitate în caz de compromitere
    - Implementarea unui sistem de reîmprospătare a token-urilor pentru experiență optimă de utilizare
-   - Mecanisme de invalidare a token-urilor pentru delogare sau în caz de compromitere
+   - Mecanisme de invalidare a token-urilor pentru logout sau în caz de compromitere
 
 5. **Protecție CSRF**:
    - Implementarea de token-uri anti-CSRF pentru formulare
@@ -387,7 +387,7 @@ Aplicația implementează următoarele măsuri de securitate pentru a proteja da
 
 6. **Alte măsuri**:
    - Headerele HTTP de securitate (Content-Security-Policy, X-XSS-Protection, etc.)
-   - Sanitizarea input-urilor pentru prevenirea atacurilor de tip injecție
+   - Sanitizarea intrălior pentru prevenirea atacurilor de tip injection
    - Validarea strictă a datelor pe server, indiferent de validarea din client
    - Utilizarea HTTPS pentru toate comunicațiile
    - Logging și auditing pentru detectarea tentativelor de intruziune
@@ -398,7 +398,7 @@ Aplicația a fost proiectată urmând principiul "security by design", cu securi
 
 1. **Defense in Depth** - Multiple straturi de securitate care funcționează independent
 2. **Principle of Least Privilege** - Acordarea doar a permisiunilor minime necesare pentru funcționare
-3. **Fail Secure** - În caz de eroare, sistemul defaultează la starea sigură (acces refuzat)
+3. **Fail Secure** - În caz de eroare, sistemul revine la starea sigură (acces refuzat)
 4. **Complete Mediation** - Toate accesele la resurse sunt verificate complet
 5. **Validare pe server** - Nicio decizie de securitate nu se bazează exclusiv pe validări în client
 
