@@ -6,6 +6,7 @@ import (
     "net/http"
     "time"
     "log"
+    "os"
 
     "github.com/gin-contrib/cors"
     "github.com/gin-contrib/sessions"
@@ -26,10 +27,10 @@ func main() {
     r := gin.Default()
 
     // Session configuration
-    store := cookie.NewStore([]byte("your-secret-key-1234"))
+    store := cookie.NewStore([]byte(os.Getenv("SESSION_SECRET")));
     store.Options(sessions.Options{
         Path:     "/",
-        MaxAge:   86400 * 7,
+        MaxAge:   86400 * 7, // 86400 secunde = 1 zi
         Secure:   false,    // false = HTTP -> in development
         HttpOnly: true,
         SameSite: http.SameSiteLaxMode, // frontend/backend -> different ports
